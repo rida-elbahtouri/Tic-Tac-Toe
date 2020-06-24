@@ -16,11 +16,9 @@ def starting_of_thegame
   puts "nice to meet you #{player1} can the second player tell his name :"
   player2 = gets.chomp
   puts "Hello #{player1} and #{player2}"
-  puts " #{player1} chose a number from the board"
-  puts " #{player2} chose a number from the board"
-  players = [player1, player2]
-  start_player = players.sample
-  puts "the first player will be #{start_player} you will play with X"
+  
+  players = [player1, player2].shuffle
+  puts "the first player will be #{players[0]} you will play with X"
   puts 'this is the board of the game'
   players
 end
@@ -38,9 +36,10 @@ draw_board(positions)
   draw_board(positions)
   # check if player wins or if it draw and break from the loop
   # if player wins puts "congratulation for #{player[0]}, you win"
-# checks if a player won by using a control flow or contitionals
-#checks if position hasn't been picked or chosen by another player 
-
+ # checks if a player won by using a control flow or contitionals
+ #checks if position hasn't been picked or chosen by another player
+ #check if the output is an integer 
+  #check if there's any empty position
   chose_position(player[1], 'O', positions)
   draw_board(positions)
   # check if player wins  or if it draw and break from the loop
