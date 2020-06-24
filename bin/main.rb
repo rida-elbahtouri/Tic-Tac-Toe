@@ -38,6 +38,9 @@ draw_board(positions)
   draw_board(positions)
   # check if player wins or if it draw and break from the loop
   # if player wins puts "congratulation for #{player[0]}, you win"
+# checks if a player won by using a control flow or contitionals
+#checks if position hasn't been picked or chosen by another player 
+
   chose_position(player[1], 'O', positions)
   draw_board(positions)
   # check if player wins  or if it draw and break from the loop
