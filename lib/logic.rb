@@ -21,7 +21,7 @@ class CheckWinning
   def check_draw(mark)
     @positions.all?(String) and check_win(mark) == false
   end
-  end
+end
 class CheckPosition
   def check_input(input)
     true if input.to_i.between?(1, 9)
