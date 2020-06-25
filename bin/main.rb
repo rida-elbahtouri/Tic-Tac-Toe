@@ -11,6 +11,8 @@ end
 
 def starting_of_thegame
   puts 'Hello and welcome to Tic Tac Toe'
+  puts 'the game is for two players, X and O, who take turns marking the spaces in a 3×3 grid.'
+  puts 'The player who succeeds in placing three of their marks in a horizontal,vertical,or diagonal row is the winner.'
   puts 'can the first player tell me his name :'
   player1 = gets.chomp
   puts "nice to meet you #{player1} can the second player tell his name :"
@@ -25,23 +27,31 @@ end
 
 def chose_position(player1, value, positions)
   puts "#{player1} chose you position"
+  # if player wins puts "congratulation for #{player[0]}, you win"
+  # checks if position hasn't been picked or chosen by another player
+  # check if the output is an integer
   positions[gets.chomp.to_i - 1] = value
   positions
 end
 
+game_on = true
+
 player = starting_of_thegame
 draw_board(positions)
-0..5.times do
+
+while game_on
+
   chose_position(player[0], 'X', positions)
   draw_board(positions)
-  # check if player wins or if it draw and break from the loop
-  # if player wins puts "congratulation for #{player[0]}, you win"
-  # checks if a player won by using a control flow or contitionals
-  # checks if position hasn't been picked or chosen by another player
-  # check if the output is an integer
-  # check if there's any empty position
-  chose_position(player[1], 'O', positions)
-  draw_board(positions)
-  # check if player wins  or if it draw and break from the loop
-  # if player wins puts "congratulation for #{player[1]}, you win"
+
+  if winner # and/or draw (the exact condition in this milestone is not important)
+
+    game_on = false
+
+  else
+    chose_position(player[1], 'O', positions)
+    draw_board(positions)
+
+  end
+
 end
