@@ -19,6 +19,19 @@ module Logic
       msg
     end
   end
+  class CheckPosition
+    attr_writer :position, :input
+    def check_input
+      if @input.to_i in [1..9]
+        true
+      end
+    end
+    def check_position
+      if @position.class == Integer
+        true
+      end
+    end
+  end
 end
 cond = CheckWinning.new
 cond.name = 'fff'
