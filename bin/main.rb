@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
-
+require_relative '../lib/logic.rb'
 positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 def draw_board(positions)
   puts "#{positions[0]} | #{positions[1]} | #{positions[2]}"
   puts '----------'
@@ -27,10 +28,17 @@ end
 
 def chose_position(player1, value, positions)
   puts "#{player1} chose you position"
-  # if player wins puts "congratulation for #{player[0]}, you win"
-  # checks if position hasn't been picked or chosen by another player
-  # check if the output is an integer
-  positions[gets.chomp.to_i - 1] = value
+  move_valid = false
+  while move_valid == false
+    move = CheckPosition.new
+    input = gets.chomp.to_i
+    if move.check_input(input) and move.check_position(positions[input - 1])
+      positions[input - 1] = value
+      move_valid = true
+    else
+      puts 'your input is not valid try chose a valid number(between 1 and 9)'
+    end
+  end
   positions
 end
 
@@ -38,20 +46,28 @@ game_on = true
 
 player = starting_of_thegame
 draw_board(positions)
-
+current_player = [player[0], 'X']
+a = 1
+i = 0
 while game_on
 
-  chose_position(player[0], 'X', positions)
+  chose_position(current_player[0], current_player[1], positions)
   draw_board(positions)
-
-  if winner # and/or draw (the exact condition in this milestone is not important)
-
+  result = CheckWinning.new
+  result.positions = positions
+  win = result.check_win(current_player[1])
+  draw = result.check_draw(current_player[1])
+  if win # and/or draw (the exact condition in this milestone is not important)
+    puts result.check_the_winer(current_player[0])
     game_on = false
-
+  elsif draw
+    puts 'the game finished with a draw'
+    game_on = false
   else
-    chose_position(player[1], 'O', positions)
-    draw_board(positions)
-
+    i = i == 1 ? 0 : 1
+    mark = i == 1 ? 'O' : 'X'
+    p current_player = [player[i], mark]
+    a += 1
   end
 
 end
