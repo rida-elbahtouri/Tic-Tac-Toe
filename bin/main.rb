@@ -38,10 +38,12 @@ game_on = true
 
 player = starting_of_thegame
 draw_board(positions)
-
+current_player = [player[0], 'X']
+a = 1
+i = 0
 while game_on
 
-  chose_position(player[0], 'X', positions)
+  chose_position(current_player[0], current_player[1], positions)
   draw_board(positions)
 
   if winner # and/or draw (the exact condition in this milestone is not important)
@@ -49,9 +51,10 @@ while game_on
     game_on = false
 
   else
-    chose_position(player[1], 'O', positions)
-    draw_board(positions)
-
+    i = i == 1 ? 0 : 1
+    mark = i == 1 ? 'O' : 'X'
+    p current_player = [player[i], mark]
+    a += 1
   end
 
 end
