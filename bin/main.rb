@@ -20,7 +20,7 @@ def starting_of_thegame
   player2 = gets.chomp
   puts "Hello #{player1} and #{player2}"
 
-  players = [player1, player2].shuffle
+  players = [player1, player2]
   puts "the first player will be #{players[0]} you will play with X"
   puts 'this is the board of the game'
   players
