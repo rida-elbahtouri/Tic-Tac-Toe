@@ -37,13 +37,16 @@ end
 game_on = true
 
 player = starting_of_thegame
+
 board = Board.new
 board.draw_board(positions)
 current_player = [player[0], 'X']
+
 i = 0
 while game_on
 
   chose_position(current_player[0], current_player[1], positions)
+
   board.draw_board(positions)
   result = CheckWinning.new
   result.positions = positions
@@ -54,11 +57,14 @@ while game_on
     game_on = false
   elsif draw
     puts 'the game finished with a draw'
+
     game_on = false
   else
     i = i == 1 ? 0 : 1
     mark = i == 1 ? 'O' : 'X'
+
     current_player = [player[i], mark]
+
   end
 
 end
